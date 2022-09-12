@@ -1,0 +1,9 @@
+.background {
+  margin: 4rem;
+  opacity: 0.7;
+}
+
+.background img {
+  margin: 2rem;
+  width: 10rem;
+}
