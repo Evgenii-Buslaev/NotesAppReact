@@ -1,0 +1,35 @@
+.note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(168, 175, 140);
+  width: 25vw;
+  height: auto;
+  padding: 1rem 0;
+  margin: 1rem auto 0;
+}
+
+.noteText {
+  width: 20vw;
+  height: auto;
+  overflow-wrap: break-word;
+  text-align: justify;
+}
+
+.noteButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  margin: 1.5rem 0 0;
+}
+
+.note img {
+  width: 25px;
+}
+
+.note:hover .noteButtons {
+  opacity: 1;
+}
