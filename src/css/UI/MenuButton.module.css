@@ -1,0 +1,26 @@
+.menuButton {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0.3rem 2rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  border-radius: 10px 5px 2em / 20px 25px 30%;
+  width: 15vw;
+}
+
+.menuButton:hover {
+  background-color: rgb(117, 117, 117);
+}
+
+.menuButton img {
+  width: 30px;
+}
+
+.menuButton h3 {
+  margin-left: 1rem;
+}
+
+.active {
+  background-color: rgb(44, 43, 43);
+  color: rgb(185, 185, 185);
+}

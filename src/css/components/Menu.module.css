@@ -1,0 +1,7 @@
+.menuCont {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  width: 25vw;
+  height: 80vh;
+}
