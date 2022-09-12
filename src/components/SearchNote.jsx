@@ -6,9 +6,13 @@ import styles from "../css/components/SearchNote.module.css";
 function SearchNote() {
   return (
     <div className={styles.searchNote}>
-      <BsSearch />
+      <button>
+        <BsSearch className={styles.icons} />
+      </button>
       <input className={styles.searchInput} type="text" placeholder="Поиск" />
-      <GrClose />
+      <button>
+        <GrClose className={styles.icons} />
+      </button>
     </div>
   );
 }
