@@ -5,6 +5,7 @@ import "./css/reset.css";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import NotesList from "./components/NotesList";
+import NoteInput from "./components/NoteInput";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Header />
       <main>
         <Menu />
-        <NotesList />
+        <NotesList>
+          <NoteInput />
+        </NotesList>
       </main>
     </div>
   );
