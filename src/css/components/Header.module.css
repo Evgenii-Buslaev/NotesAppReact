@@ -1,7 +1,16 @@
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 2rem;
   width: 100vw;
   height: 80px;
   border-bottom: thin solid black;
+}
+
+.logoCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 15vw;
 }

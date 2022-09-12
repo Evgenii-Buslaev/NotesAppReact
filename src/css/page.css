@@ -7,7 +7,8 @@ body {
   background-color: rgb(190, 190, 190);
 }
 
-button {
+button,
+input {
   appearance: none;
   border: none;
   outline: none;
