@@ -19,3 +19,7 @@ button:hover {
   cursor: pointer;
   opacity: 0.4;
 }
+
+main {
+  display: flex;
+}
