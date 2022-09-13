@@ -1,4 +1,9 @@
 .notesCont {
-  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  padding: 1rem 0.2rem;
+  height: auto;
   width: 80vw;
 }
