@@ -10,7 +10,7 @@ import notes from "../icons/menu/storage.png";
 import collection from "../icons//menu/collection.png";
 import recycleBin from "../icons//menu/recycle-bin.png";
 
-function NotesList({ storage, section }) {
+function NotesList({ storage, section, edit }) {
   const notesBackgroundText = "Здесь будут храниться Ваши заметки.";
   const collectionBackgroundText =
     "Здесь будет храниться коллекция Ваших заметок";
@@ -39,7 +39,7 @@ function NotesList({ storage, section }) {
     <div className={styles.notesCont}>
       {itemsArray.length ? (
         itemsArray.map((elem) => (
-          <Note text={elem.text} id={elem.id} key={elem.id} />
+          <Note text={elem.text} id={elem.id} key={elem.id} edit={edit} />
         ))
       ) : (
         <BackgroundOfEmptyList>

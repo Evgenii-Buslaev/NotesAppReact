@@ -26,6 +26,11 @@ function App() {
     console.log(notesList);
   }
 
+  function editNote(id) {
+    let changedNote = notesList.filter((elem) => elem.id === id);
+    console.log(changedNote);
+  }
+
   function changeInput(e) {
     setInputNote(e.target.value);
   }
@@ -45,7 +50,7 @@ function App() {
             change={changeInput}
             create={createNote}
           />
-          <NotesList storage={notesList} section={section} />
+          <NotesList storage={notesList} section={section} edit={editNote} />
         </div>
       </main>
     </div>
