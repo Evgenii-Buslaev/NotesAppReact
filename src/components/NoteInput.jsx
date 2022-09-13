@@ -3,14 +3,14 @@ import closeIcon from "../icons/note-input/close.png";
 
 import classes from "../css/components/NoteInput.module.css";
 
-function NoteInput({ change, add }) {
+function NoteInput({ change, add, value }) {
   return (
-    <div className={classes.noteInputCont}>
+    <form className={classes.noteInputCont} onSubmit={add}>
       <input
         type="sumbit"
         placeholder="Заметка..."
         onChange={change}
-        onSubmit={add}
+        value={value}
       ></input>
       <button onClick={add}>
         <img src={confirmIcon} alt="confirm-button-icon" />
@@ -18,7 +18,7 @@ function NoteInput({ change, add }) {
       <button>
         <img src={closeIcon} alt="close-button-icon" />
       </button>
-    </div>
+    </form>
   );
 }
 

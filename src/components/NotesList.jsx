@@ -18,10 +18,10 @@ function NotesList() {
   const [notesList, setNotesList] = useState([]);
   const [inputNote, setInputNote] = useState("");
 
-  function createNote() {
+  function createNote(e) {
+    e.preventDefault();
     setNotesList([...notesList, { text: inputNote, id: uuidv4() }]);
     setInputNote("");
-    console.log(notesList);
   }
 
   function changeInput(e) {
@@ -30,7 +30,7 @@ function NotesList() {
 
   return (
     <div className={styles.notesCont}>
-      <NoteInput change={changeInput} add={createNote} />
+      <NoteInput change={changeInput} add={createNote} value={inputNote} />
       {notesList.length ? (
         notesList.map((elem) => (
           <Note text={elem.text} id={elem.id} key={elem.id} />
