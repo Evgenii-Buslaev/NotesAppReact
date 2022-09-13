@@ -14,28 +14,38 @@ function App() {
   const [notesList, setNotesList] = useState([]);
   const [inputNote, setInputNote] = useState("");
 
+  const [section, setSection] = useState("notes");
+
   function createNote(e) {
     e.preventDefault();
-    setNotesList([...notesList, { text: inputNote, id: uuidv4() }]);
+    setNotesList([
+      ...notesList,
+      { text: inputNote, id: uuidv4(), section: "notes" },
+    ]);
     setInputNote("");
+    console.log(notesList);
   }
 
   function changeInput(e) {
     setInputNote(e.target.value);
   }
 
+  function changeSection(sectionName) {
+    setSection(sectionName);
+  }
+
   return (
     <div className="App">
       <Header />
       <main>
-        <Menu />
+        <Menu change={changeSection} />
         <div>
           <NoteInput
             value={inputNote}
             change={changeInput}
             create={createNote}
           />
-          <NotesList storage={notesList} />
+          <NotesList storage={notesList} section={section} />
         </div>
       </main>
     </div>
