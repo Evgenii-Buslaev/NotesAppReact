@@ -38,9 +38,14 @@ function App() {
 
   function moveToAnotherSection(id, sectionName) {
     const changedArray = notesList.filter((elem) => elem.id !== id);
-    const changedNote = notesList.filter((elem) => elem.id === id);
-    changedNote[0].section = sectionName;
-    setNotesList([...changedArray, changedNote[0]]);
+    const changedNote = notesList.filter((elem) => elem.id === id)[0];
+
+    if (changedNote.section === sectionName) {
+      return;
+    }
+
+    changedNote.section = sectionName;
+    setNotesList([...changedArray, changedNote]);
   }
 
   // menu methods

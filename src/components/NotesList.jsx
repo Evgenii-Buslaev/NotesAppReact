@@ -45,6 +45,7 @@ function NotesList({ storage, section, edit, move }) {
             key={elem.id}
             edit={edit}
             move={move}
+            section={section}
           />
         ))
       ) : (
