@@ -11,16 +11,11 @@ import NoteInput from "./components/NoteInput";
 import NotesList from "./components/NotesList";
 
 function App() {
-  const [notesList, setNotesList] = useState([
-    { text: "1", id: uuidv4(), section: "notes" },
-    { text: "2", id: uuidv4(), section: "collection" },
-  ]);
+  const [notesList, setNotesList] = useState([]);
   const [inputNote, setInputNote] = useState("");
-
   const [section, setSection] = useState("notes");
 
   // notes methods
-
   function createNote(e) {
     e.preventDefault();
     setNotesList([
@@ -28,12 +23,10 @@ function App() {
       { text: inputNote, id: uuidv4(), section: "notes" },
     ]);
     setInputNote("");
-    console.log(notesList);
   }
 
   function editNote(id) {
-    let changedNote = notesList.filter((elem) => elem.id === id);
-    console.log(changedNote);
+    notesList.filter((elem) => elem.id === id);
   }
 
   function moveToAnotherSection(id, sectionName) {
@@ -52,6 +45,10 @@ function App() {
     setNotesList(notesList.filter((elem) => elem.id !== id));
   }
 
+  function clearNoteList() {
+    setNotesList([]);
+  }
+
   // menu methods
   function changeInput(e) {
     setInputNote(e.target.value);
@@ -67,11 +64,14 @@ function App() {
       <main>
         <Menu change={changeSection} />
         <div>
-          <NoteInput
-            value={inputNote}
-            change={changeInput}
-            create={createNote}
-          />
+          {section === "notes" ? (
+            <NoteInput
+              value={inputNote}
+              change={changeInput}
+              create={createNote}
+              clear={clearNoteList}
+            />
+          ) : null}
           <NotesList
             storage={notesList}
             section={section}

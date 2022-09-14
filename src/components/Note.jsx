@@ -1,5 +1,6 @@
 import styles from "../css/components/Note.module.css";
 
+// icons
 import notes from "../icons//menu/storage.png";
 import change from "../icons/note/edit.png";
 import collection from "../icons//menu/collection.png";

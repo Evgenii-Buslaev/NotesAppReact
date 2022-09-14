@@ -11,10 +11,15 @@ import collection from "../icons//menu/collection.png";
 import recycleBin from "../icons//menu/recycle-bin.png";
 
 function NotesList({ storage, section, edit, move, remove }) {
-  const notesBackgroundText = "Здесь будут храниться Ваши заметки.";
-  const collectionBackgroundText =
-    "Здесь будет храниться коллекция Ваших заметок";
-  const recycleBinBackgroundText = "Здесь будут храниться удаленные заметки.";
+  const [
+    notesBackgroundText,
+    collectionBackgroundText,
+    recycleBinBackgroundText,
+  ] = [
+    "Здесь будут храниться Ваши заметки.",
+    "Здесь будет храниться коллекция Ваших заметок",
+    "Здесь будут храниться удаленные заметки.",
+  ];
 
   const backgroundProps = { icon: null, text: null };
 
