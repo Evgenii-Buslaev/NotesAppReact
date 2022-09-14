@@ -17,6 +17,10 @@ function App() {
 
   // notes methods
   function createNote(e) {
+    if (!inputNote.length) {
+      alert("Заметка не может быть пустой");
+      return;
+    }
     e.preventDefault();
     setNotesList([
       ...notesList,
