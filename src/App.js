@@ -11,10 +11,15 @@ import NoteInput from "./components/NoteInput";
 import NotesList from "./components/NotesList";
 
 function App() {
-  const [notesList, setNotesList] = useState([]);
+  const [notesList, setNotesList] = useState([
+    { text: "1", id: uuidv4(), section: "notes" },
+    { text: "2", id: uuidv4(), section: "collection" },
+  ]);
   const [inputNote, setInputNote] = useState("");
 
   const [section, setSection] = useState("notes");
+
+  // notes methods
 
   function createNote(e) {
     e.preventDefault();
@@ -31,6 +36,14 @@ function App() {
     console.log(changedNote);
   }
 
+  function moveToAnotherSection(id, sectionName) {
+    const changedArray = notesList.filter((elem) => elem.id !== id);
+    const changedNote = notesList.filter((elem) => elem.id === id);
+    changedNote[0].section = sectionName;
+    setNotesList([...changedArray, changedNote[0]]);
+  }
+
+  // menu methods
   function changeInput(e) {
     setInputNote(e.target.value);
   }
@@ -50,7 +63,12 @@ function App() {
             change={changeInput}
             create={createNote}
           />
-          <NotesList storage={notesList} section={section} edit={editNote} />
+          <NotesList
+            storage={notesList}
+            section={section}
+            edit={editNote}
+            move={moveToAnotherSection}
+          />
         </div>
       </main>
     </div>
