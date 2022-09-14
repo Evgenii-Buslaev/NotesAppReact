@@ -4,8 +4,9 @@ import notes from "../icons//menu/storage.png";
 import change from "../icons/note/edit.png";
 import collection from "../icons//menu/collection.png";
 import recycleBin from "../icons//menu/recycle-bin.png";
+import removeItem from "../icons//menu/remove.png";
 
-function Note({ text, edit, id, move }) {
+function Note({ text, edit, id, move, remove }) {
   const noteButtons = [
     {
       title: "Переместить в заметки",
@@ -28,11 +29,18 @@ function Note({ text, edit, id, move }) {
       onClick: () => edit(id),
     },
     {
-      title: "Переместить в корзину/удалить",
+      title: "Переместить в корзину",
       src: recycleBin,
       alt: "to-recycle-bin",
       section: "recycleBin",
       onClick: () => move(id, "recycleBin"),
+    },
+
+    {
+      title: "Удалить",
+      src: removeItem,
+      alt: "delete",
+      onClick: () => remove(id),
     },
   ];
 

@@ -48,6 +48,10 @@ function App() {
     setNotesList([...changedArray, changedNote]);
   }
 
+  function deleteNote(id) {
+    setNotesList(notesList.filter((elem) => elem.id !== id));
+  }
+
   // menu methods
   function changeInput(e) {
     setInputNote(e.target.value);
@@ -73,6 +77,7 @@ function App() {
             section={section}
             edit={editNote}
             move={moveToAnotherSection}
+            remove={deleteNote}
           />
         </div>
       </main>
