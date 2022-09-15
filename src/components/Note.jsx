@@ -1,13 +1,16 @@
 import styles from "../css/components/Note.module.css";
 
+import { useState } from "react";
+
 // icons
 import notes from "../icons//menu/storage.png";
-import change from "../icons/note/edit.png";
 import collection from "../icons//menu/collection.png";
 import recycleBin from "../icons//menu/recycle-bin.png";
 import removeItem from "../icons//menu/remove.png";
 
 function Note({ text, edit, id, move, remove }) {
+  const [noteText, setNoteText] = useState(text);
+
   const noteButtons = [
     {
       title: "Переместить в заметки",
@@ -22,12 +25,6 @@ function Note({ text, edit, id, move, remove }) {
       alt: "to-collection",
       section: "collection",
       onClick: () => move(id, "collection"),
-    },
-    {
-      title: "Редактировать",
-      src: change,
-      alt: "edit",
-      onClick: () => edit(id),
     },
     {
       title: "Переместить в корзину",
@@ -47,7 +44,14 @@ function Note({ text, edit, id, move, remove }) {
 
   return (
     <div className={styles.note}>
-      <h4 className={styles.noteText}>{text}</h4>
+      <input
+        className={styles.noteText}
+        value={noteText}
+        onChange={(e) => {
+          setNoteText(e.target.value);
+          edit(id, e.target.value);
+        }}
+      />
       <div className={styles.noteButtons}>
         {noteButtons.map((elem) => (
           <button title={elem.title} onClick={elem.onClick} key={elem.alt}>

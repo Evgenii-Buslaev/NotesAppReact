@@ -24,13 +24,20 @@ function App() {
     e.preventDefault();
     setNotesList([
       ...notesList,
-      { text: inputNote, id: uuidv4(), section: "notes" },
+      {
+        text: inputNote,
+        id: uuidv4(),
+        section: "notes",
+      },
     ]);
     setInputNote("");
   }
 
-  function editNote(id) {
-    notesList.filter((elem) => elem.id === id);
+  function editNote(id, text) {
+    const changedArray = notesList.filter((elem) => elem.id !== id);
+    const editingNote = notesList.filter((elem) => elem.id === id)[0];
+    editingNote.text = text;
+    setNotesList([editingNote, ...changedArray]);
   }
 
   function moveToAnotherSection(id, sectionName) {
