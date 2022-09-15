@@ -13,10 +13,12 @@
 
 .noteText {
   width: 20vw;
-  height: auto;
-  overflow-wrap: break-word;
-  text-align: justify;
+  height: 70px;
   font-size: 1.2rem;
+  font-family: inherit;
+  word-wrap: break-word;
+  text-align: justify;
+  resize: none;
 }
 
 .noteButtons {
