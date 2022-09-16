@@ -1,11 +1,16 @@
-export function searchNote(text, list, setFoundList) {
+export function searchNote(text, list, setFoundList, setInput) {
   let filtered = list.filter((elem) => elem.text.includes(text));
   setFoundList(filtered);
-  filtered.length ? setFoundList(filtered) : alert("Такой заметки не найдено");
-
-  console.log(filtered);
+  if (filtered.length) {
+    setFoundList(filtered);
+  } else {
+    setInput("");
+    setFoundList([]);
+    alert("Такой заметки не найдено");
+  }
 }
 
-export function closeSearch(setInput) {
+export function closeSearch(setInput, setFoundList) {
   setInput("");
+  setFoundList([]);
 }

@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Menu from "./components/Menu";
 import NoteInput from "./components/NoteInput";
 import NotesList from "./components/NotesList";
+import SearchList from "./components/SearchList";
 
 // handlers
 import {
@@ -46,36 +47,51 @@ function App() {
   return (
     <div className="App">
       <Header
+        setValue={setInputState}
+        setFoundList={setFoundLists}
         value={inputState}
         change={setInputState}
-        search={() => searchNote(inputState, notesList, setFoundLists)}
+        search={() =>
+          searchNote(inputState, notesList, setFoundLists, setInputState)
+        }
       />
-      <main>
-        <Menu change={changeSection} />
-        <div>
-          {section === "notes" ? (
-            <NoteInput
+      {foundLists.length ? (
+        <SearchList
+          list={foundLists}
+          edit={editItem}
+          move={replaceItem}
+          remove={deleteItem}
+          storage={notesList}
+          setStorage={setNotesList}
+        />
+      ) : (
+        <main>
+          <Menu change={changeSection} />
+          <div>
+            {section === "notes" ? (
+              <NoteInput
+                setStorage={setNotesList}
+                value={inputNote}
+                change={changeInput}
+                create={(e) => {
+                  e.preventDefault();
+                  createItem(inputNote, notesList, setInputNote, setNotesList);
+                }}
+                clearAll={clearStorage}
+              />
+            ) : null}
+            <NotesList
+              storage={notesList}
               setStorage={setNotesList}
-              value={inputNote}
-              change={changeInput}
-              create={(e) => {
-                e.preventDefault();
-                createItem(inputNote, notesList, setInputNote, setNotesList);
-              }}
-              clearAll={clearStorage}
+              section={section}
+              edit={editItem}
+              move={replaceItem}
+              remove={deleteItem}
+              clearBin={() => clearSection(notesList, setNotesList)}
             />
-          ) : null}
-          <NotesList
-            storage={notesList}
-            setStorage={setNotesList}
-            section={section}
-            edit={editItem}
-            move={replaceItem}
-            remove={deleteItem}
-            clearBin={() => clearSection(notesList, setNotesList)}
-          />
-        </div>
-      </main>
+          </div>
+        </main>
+      )}
     </div>
   );
 }

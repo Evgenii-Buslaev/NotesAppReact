@@ -3,7 +3,13 @@ import { GrClose } from "react-icons/gr";
 
 import styles from "../css/components/SearchNote.module.css";
 
-function SearchNote({ value, change, search }) {
+import { closeSearch } from "../handlers/search_handlers";
+
+function SearchNote({ value, change, search, setValue, setFoundList }) {
+  function closeSearchSession() {
+    closeSearch(setValue, setFoundList);
+  }
+
   return (
     <div className={styles.searchNote}>
       <button>
@@ -18,8 +24,9 @@ function SearchNote({ value, change, search }) {
           change(e.target.value);
           search(e.target.value);
         }}
+        onBlur={closeSearchSession}
       />
-      <button onClick={() => change("")}>
+      <button onClick={closeSearchSession}>
         <GrClose className={styles.icons} />
       </button>
     </div>
