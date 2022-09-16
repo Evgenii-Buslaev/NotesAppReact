@@ -6,7 +6,7 @@ import ImageButton from "..//UI/ImageButton";
 import confirmIcon from "../icons/note-input/confirm.png";
 import clearList from "../icons/menu/recycle-bin.png";
 
-function NoteInput({ change, create, value, clearAll }) {
+function NoteInput({ setStorage, change, create, value, clearAll }) {
   return (
     <>
       <form className={classes.noteInputCont} onSubmit={create}>
@@ -25,7 +25,7 @@ function NoteInput({ change, create, value, clearAll }) {
           imageAlt="confirm-button-icon"
         />
         <ImageButton
-          onClickHandler={clearAll}
+          onClickHandler={() => clearAll(setStorage)}
           title="Удалить все заметки"
           imageSrc={clearList}
           imageAlt="close-button-icon"

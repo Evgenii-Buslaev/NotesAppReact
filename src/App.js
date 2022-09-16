@@ -3,70 +3,28 @@ import "./css/page.css";
 import "./css/reset.css";
 
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
+// components
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import NoteInput from "./components/NoteInput";
 import NotesList from "./components/NotesList";
 
+// handlers
+
+import {
+  createItem,
+  editItem,
+  replaceItem,
+  deleteItem,
+  clearSection,
+  clearStorage,
+} from "./handlers/note_handlers";
+
 function App() {
   const [notesList, setNotesList] = useState([]);
   const [inputNote, setInputNote] = useState("");
   const [section, setSection] = useState("notes");
-
-  // notes methods
-  function createNote(e) {
-    if (!inputNote.length) {
-      alert("Заметка не может быть пустой");
-      return;
-    }
-    e.preventDefault();
-    setNotesList([
-      ...notesList,
-      {
-        text: inputNote,
-        id: uuidv4(),
-        section: "notes",
-        index: notesList.length++,
-      },
-    ]);
-    setInputNote("");
-  }
-
-  function editNote(id, text) {
-    const changedArray = notesList.filter((elem) => elem.id !== id);
-    const editingNote = notesList.filter((elem) => elem.id === id)[0];
-    editingNote.text = text;
-    const sortedEditedArray = [...changedArray, editingNote].sort(
-      (prev, curr) => (prev.index > curr.index ? 1 : -1)
-    );
-    setNotesList(sortedEditedArray);
-  }
-
-  function moveToAnotherSection(id, sectionName) {
-    const changedArray = notesList.filter((elem) => elem.id !== id);
-    const changedNote = notesList.filter((elem) => elem.id === id)[0];
-
-    if (changedNote.section === sectionName) {
-      return;
-    }
-
-    changedNote.section = sectionName;
-    setNotesList([...changedArray, changedNote]);
-  }
-
-  function deleteNote(id) {
-    setNotesList(notesList.filter((elem) => elem.id !== id));
-  }
-
-  function clearRecycleBin() {
-    setNotesList(notesList.filter((elem) => elem.section !== "recycleBin"));
-  }
-
-  function clearNoteList() {
-    setNotesList([]);
-  }
 
   // menu methods
   function changeInput(e) {
@@ -87,17 +45,21 @@ function App() {
             <NoteInput
               value={inputNote}
               change={changeInput}
-              create={createNote}
-              clearAll={clearNoteList}
+              create={(e) => {
+                e.preventDefault();
+                createItem(inputNote, notesList, setInputNote, setNotesList);
+              }}
+              clearAll={clearStorage}
             />
           ) : null}
           <NotesList
             storage={notesList}
+            setStorage={setNotesList}
             section={section}
-            edit={editNote}
-            move={moveToAnotherSection}
-            remove={deleteNote}
-            clearBin={clearRecycleBin}
+            edit={editItem}
+            move={replaceItem}
+            remove={deleteItem}
+            clearBin={clearSection}
           />
         </div>
       </main>
