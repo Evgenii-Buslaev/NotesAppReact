@@ -60,6 +60,10 @@ function App() {
     setNotesList(notesList.filter((elem) => elem.id !== id));
   }
 
+  function clearRecycleBin() {
+    setNotesList(notesList.filter((elem) => elem.section !== "recycleBin"));
+  }
+
   function clearNoteList() {
     setNotesList([]);
   }
@@ -84,7 +88,7 @@ function App() {
               value={inputNote}
               change={changeInput}
               create={createNote}
-              clear={clearNoteList}
+              clearAll={clearNoteList}
             />
           ) : null}
           <NotesList
@@ -93,6 +97,7 @@ function App() {
             edit={editNote}
             move={moveToAnotherSection}
             remove={deleteNote}
+            clearBin={clearRecycleBin}
           />
         </div>
       </main>

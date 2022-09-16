@@ -1,10 +1,12 @@
 import classes from "../css/components/NoteInput.module.css";
 
+import ImageButton from "..//UI/ImageButton";
+
 // icons
 import confirmIcon from "../icons/note-input/confirm.png";
 import clearList from "../icons/menu/recycle-bin.png";
 
-function NoteInput({ change, create, value, clear }) {
+function NoteInput({ change, create, value, clearAll }) {
   return (
     <>
       <form className={classes.noteInputCont} onSubmit={create}>
@@ -16,12 +18,18 @@ function NoteInput({ change, create, value, clear }) {
         ></input>
       </form>
       <div className={classes.formButtons}>
-        <button onClick={create} title="Создать заметку">
-          <img src={confirmIcon} alt="confirm-button-icon" />
-        </button>
-        <button onClick={clear} title="Удалить все заметки">
-          <img src={clearList} alt="close-button-icon" />
-        </button>
+        <ImageButton
+          onClickHandler={create}
+          title="Создать заметку"
+          imageSrc={confirmIcon}
+          imageAlt="confirm-button-icon"
+        />
+        <ImageButton
+          onClickHandler={clearAll}
+          title="Удалить все заметки"
+          imageSrc={clearList}
+          imageAlt="close-button-icon"
+        />
       </div>
     </>
   );
