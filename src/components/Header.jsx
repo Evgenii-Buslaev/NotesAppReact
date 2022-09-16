@@ -6,7 +6,7 @@ import SearchNote from "./SearchNote";
 import { GiNotebook } from "react-icons/gi";
 import { MdDarkMode } from "react-icons/md";
 
-function Header() {
+function Header({ value, change, search }) {
   return (
     <div className={styles.header}>
       <section className={styles.logoCont}>
@@ -14,7 +14,7 @@ function Header() {
         <GiNotebook className={iconClasses.icon} />
         <h1>Заметки</h1>
       </section>
-      <SearchNote />
+      <SearchNote value={value} change={change} search={search} />
       <button>
         <MdDarkMode className={iconClasses.icon} />
       </button>

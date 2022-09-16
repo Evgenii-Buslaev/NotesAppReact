@@ -11,7 +11,6 @@ import NoteInput from "./components/NoteInput";
 import NotesList from "./components/NotesList";
 
 // handlers
-
 import {
   createItem,
   editItem,
@@ -21,10 +20,19 @@ import {
   clearStorage,
 } from "./handlers/note_handlers";
 
+import { searchNote } from "./handlers/search_handlers";
+
 function App() {
+  // menu
+  const [section, setSection] = useState("notes");
+
+  // notes list states
   const [notesList, setNotesList] = useState([]);
   const [inputNote, setInputNote] = useState("");
-  const [section, setSection] = useState("notes");
+
+  // search state
+  const [inputState, setInputState] = useState("");
+  const [foundLists, setFoundLists] = useState([]);
 
   // menu methods
   function changeInput(e) {
@@ -37,12 +45,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        value={inputState}
+        change={setInputState}
+        search={() => searchNote(inputState, notesList, setFoundLists)}
+      />
       <main>
         <Menu change={changeSection} />
         <div>
           {section === "notes" ? (
             <NoteInput
+              setStorage={setNotesList}
               value={inputNote}
               change={changeInput}
               create={(e) => {
@@ -59,7 +72,7 @@ function App() {
             edit={editItem}
             move={replaceItem}
             remove={deleteItem}
-            clearBin={clearSection}
+            clearBin={() => clearSection(notesList, setNotesList)}
           />
         </div>
       </main>
