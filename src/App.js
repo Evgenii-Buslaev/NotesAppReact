@@ -28,6 +28,7 @@ function App() {
         text: inputNote,
         id: uuidv4(),
         section: "notes",
+        index: notesList.length++,
       },
     ]);
     setInputNote("");
@@ -37,7 +38,10 @@ function App() {
     const changedArray = notesList.filter((elem) => elem.id !== id);
     const editingNote = notesList.filter((elem) => elem.id === id)[0];
     editingNote.text = text;
-    setNotesList([editingNote, ...changedArray]);
+    const sortedEditedArray = [...changedArray, editingNote].sort(
+      (prev, curr) => (prev.index > curr.index ? 1 : -1)
+    );
+    setNotesList(sortedEditedArray);
   }
 
   function moveToAnotherSection(id, sectionName) {
