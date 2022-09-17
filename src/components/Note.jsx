@@ -5,14 +5,8 @@ import NoteValue from "./NoteValue";
 function Note({ section, text, id }) {
   return (
     <div className={styles.note}>
-      <NoteValue
-        text={text}
-        id={id}
-      />
-      <NoteFeatures
-        section={section}
-        id={id}
-      />
+      <NoteValue text={text} id={id} />
+      <NoteFeatures section={section} id={id} />
     </div>
   );
 }

@@ -21,15 +21,7 @@ const [
   "Здесь будут храниться удаленные заметки.",
 ];
 
-function NotesList({
-  storage,
-  setStorage,
-  section,
-  edit,
-  move,
-  remove,
-  clearBin,
-}) {
+function NotesList({ storage, section, clearBin }) {
   const backgroundProps = { icon: null, text: null };
 
   if (section === "notes") {
@@ -67,11 +59,6 @@ function NotesList({
               key={elem.id}
               section={section}
               text={elem.text}
-              edit={edit}
-              move={move}
-              remove={remove}
-              storage={storage}
-              setStorage={setStorage}
             />
           ))
         ) : (

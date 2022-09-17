@@ -6,9 +6,7 @@ import { useState } from "react";
 
 // components
 import Header from "./components/Header";
-import Menu from "./components/Menu";
-import NoteInput from "./components/NoteInput";
-import NotesList from "./components/NotesList";
+import NotesSection from "./components/NotesSection";
 import SearchList from "./components/SearchList";
 
 // handlers
@@ -22,7 +20,6 @@ import {
 } from "./handlers/note_handlers";
 
 import { searchNote } from "./handlers/search_handlers";
-
 import { AppContext } from "./handlers/context";
 
 function App() {
@@ -48,47 +45,44 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={
-        { value: inputState, 
-          setValue: setInputState, 
+      <AppContext.Provider
+        value={{
+          value: inputState,
+          setValue: setInputState,
           search: () =>
-          searchNote(inputState, notesList, setFoundLists, setInputState), 
-          setFoundList: setFoundLists }}>
+            searchNote(inputState, notesList, setFoundLists, setInputState),
+          setFoundList: setFoundLists,
+        }}
+      >
         <Header />
       </AppContext.Provider>
-      <AppContext.Provider value={{storage: notesList, setStorage: setNotesList, edit: editItem, move: replaceItem, remove: deleteItem,}}>
-      {foundLists.length ? (
-        <SearchList
-          list={foundLists}
-        />
-      ) : (
-        <main>
-          <Menu change={changeSection} />
-          <div>
-            {section === "notes" ? (
-              <NoteInput
-                setStorage={setNotesList}
-                value={inputNote}
-                change={changeInput}
-                create={(e) => {
-                  e.preventDefault();
-                  createItem(inputNote, notesList, setInputNote, setNotesList);
-                }}
-                clearAll={clearStorage}
-              />
-            ) : null}
-            <NotesList
-              storage={notesList}
-              setStorage={setNotesList}
-              section={section}
-              edit={editItem}
-              move={replaceItem}
-              remove={deleteItem}
-              clearBin={() => clearSection(notesList, setNotesList)}
-            />
-          </div>
-        </main>
-      )}
+      <AppContext.Provider
+        value={{
+          storage: notesList,
+          setStorage: setNotesList,
+          edit: editItem,
+          move: replaceItem,
+          remove: deleteItem,
+        }}
+      >
+        {foundLists.length ? (
+          <SearchList list={foundLists} />
+        ) : (
+          <NotesSection
+            section={section}
+            value={inputNote}
+            changeSection={changeSection}
+            changeInput={changeInput}
+            storage={notesList}
+            create={(e) => {
+              e.preventDefault();
+              createItem(inputNote, notesList, setInputNote, setNotesList);
+            }}
+            setStorage={setNotesList}
+            clearAll={clearStorage}
+            clearBin={() => clearSection(notesList, setNotesList)}
+          />
+        )}
       </AppContext.Provider>
     </div>
   );
