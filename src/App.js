@@ -23,6 +23,34 @@ import {
 
 import { searchNote } from "./handlers/search_handlers";
 
+/* import { AppContext } from "./handlers/context";
+
+const provider = (
+  <AppContext.Provider
+    value={{
+      search: {
+        value: inputState,
+        change: setInputState,
+        setValue: setInputState,
+        setFoundList: setFoundLists,
+        search: () =>
+          searchNote(inputState, notesList, setFoundLists, setInputState),
+        list: foundLists,
+      },
+      input: {
+        value: inputNote,
+        change: changeInput,
+        create: (e) => {
+          e.preventDefault();
+          createItem(inputNote, notesList, setInputNote, setNotesList);
+        },
+        setStorage: setNotesList,
+        clearAll: clearStorage,
+      },
+    }}
+  ></AppContext.Provider>
+); */
+
 function App() {
   // menu
   const [section, setSection] = useState("notes");
