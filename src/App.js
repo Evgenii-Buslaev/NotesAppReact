@@ -56,14 +56,10 @@ function App() {
           setFoundList: setFoundLists }}>
         <Header />
       </AppContext.Provider>
+      <AppContext.Provider value={{storage: notesList, setStorage: setNotesList, edit: editItem, move: replaceItem, remove: deleteItem,}}>
       {foundLists.length ? (
         <SearchList
           list={foundLists}
-          edit={editItem}
-          move={replaceItem}
-          remove={deleteItem}
-          storage={notesList}
-          setStorage={setNotesList}
         />
       ) : (
         <main>
@@ -93,6 +89,7 @@ function App() {
           </div>
         </main>
       )}
+      </AppContext.Provider>
     </div>
   );
 }

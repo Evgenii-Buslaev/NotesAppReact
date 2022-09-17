@@ -1,12 +1,16 @@
+import {  useContext } from "react";
+
+import { AppContext } from "../handlers/context";
 import styles from "../css/components/Note.module.css";
 
 // icons
 import notes from "../icons//menu/storage.png";
 import collection from "../icons//menu/collection.png";
 import recycleBin from "../icons//menu/recycle-bin.png";
-import removeItem from "../icons//menu/remove.png";
 
-function NoteFeatures({ move, remove, id, storage, setStorage, section }) {
+
+function NoteFeatures({ id, section }) {
+  const { move, remove, storage, setStorage} = useContext(AppContext)
   const noteButtons = [
     {
       title: "Переместить в заметки",
