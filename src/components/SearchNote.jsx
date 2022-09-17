@@ -24,7 +24,9 @@ function SearchNote({ value, change, search, setValue, setFoundList }) {
           change(e.target.value);
           search(e.target.value);
         }}
-        onBlur={closeSearchSession}
+        onKeyPress={(e) => {
+          console.log(e.charCode);
+        }}
       />
       <button onClick={closeSearchSession}>
         <GrClose className={styles.icons} />

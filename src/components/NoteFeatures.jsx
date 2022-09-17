@@ -6,7 +6,7 @@ import collection from "../icons//menu/collection.png";
 import recycleBin from "../icons//menu/recycle-bin.png";
 import removeItem from "../icons//menu/remove.png";
 
-function NoteFeatures({ move, remove, id, storage, setStorage }) {
+function NoteFeatures({ move, remove, id, storage, setStorage, section }) {
   const noteButtons = [
     {
       title: "Переместить в заметки",
@@ -23,19 +23,21 @@ function NoteFeatures({ move, remove, id, storage, setStorage }) {
       onClick: () => move(id, "collection", storage, setStorage),
     },
     {
-      title: "Переместить в корзину",
+      title: "Переместить в корзину/удалить",
       src: recycleBin,
-      alt: "to-recycle-bin",
+      alt: "to-recycle-bin/remove",
       section: "recycleBin",
-      onClick: () => move(id, "recycleBin", storage, setStorage),
-    },
-    {
-      title: "Удалить",
-      src: removeItem,
-      alt: "delete",
-      onClick: () => remove(id, storage, setStorage),
+      onClick: () => defineDeleting(id, storage, setStorage, section),
     },
   ];
+
+  function defineDeleting(id, storage, setStorage, section) {
+    if (section === "recycleBin") {
+      remove(id, storage, setStorage);
+    } else {
+      move(id, "recycleBin", storage, setStorage);
+    }
+  }
 
   return (
     <div className={styles.noteButtons}>

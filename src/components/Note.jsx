@@ -2,7 +2,7 @@ import styles from "../css/components/Note.module.css";
 import NoteFeatures from "./NoteFeatures";
 import NoteValue from "./NoteValue";
 
-function Note({ storage, setStorage, text, edit, id, move, remove }) {
+function Note({ storage, setStorage, section, text, edit, id, move, remove }) {
   return (
     <div className={styles.note}>
       <NoteValue
@@ -13,6 +13,7 @@ function Note({ storage, setStorage, text, edit, id, move, remove }) {
         id={id}
       />
       <NoteFeatures
+        section={section}
         storage={storage}
         setStorage={setStorage}
         move={move}

@@ -39,16 +39,36 @@ export function replaceItem(id, sectionName, list, setList) {
 
   changedNote.section = sectionName;
   setList([...changedArray, changedNote]);
+
+  let folder;
+  if (sectionName === "notes") {
+    folder = "Заметки";
+  }
+  if (sectionName === "collection") {
+    folder = "Коллекция";
+  }
+  if (sectionName === "recycleBin") {
+    folder = "Корзина";
+  }
+  alert(`Заметка перемещена в папку '${folder}'`);
 }
 
 export function deleteItem(id, list, setList) {
   setList(list.filter((elem) => elem.id !== id));
+  alert("Заметка удалена.");
 }
 
 export function clearSection(list, setList) {
   setList(list.filter((elem) => elem.section !== "recycleBin"));
+  alert("Корзина очищена.");
 }
 
 export function clearStorage(setList) {
-  setList([]);
+  let check = window.confirm("Вы уверены, что хотите удалить ВСЕ заметки?");
+  if (check === true) {
+    setList([]);
+    alert("Содержимое папок удалено.");
+  } else {
+    return;
+  }
 }
