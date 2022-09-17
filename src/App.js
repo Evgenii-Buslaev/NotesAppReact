@@ -1,8 +1,8 @@
+import { useState } from "react";
+
 import "./App.css";
 import "./css/page.css";
 import "./css/reset.css";
-
-import { useState } from "react";
 
 // components
 import Header from "./components/Header";
@@ -11,6 +11,7 @@ import SearchList from "./components/SearchList";
 
 // handlers
 import {
+  changeInput,
   createItem,
   editItem,
   replaceItem,
@@ -18,7 +19,6 @@ import {
   clearSection,
   clearStorage,
 } from "./handlers/note_handlers";
-
 import { searchNote } from "./handlers/search_handlers";
 import { AppContext } from "./handlers/context";
 
@@ -34,11 +34,7 @@ function App() {
   const [inputState, setInputState] = useState("");
   const [foundLists, setFoundLists] = useState([]);
 
-  // menu methods
-  function changeInput(e) {
-    setInputNote(e.target.value);
-  }
-
+  // menu
   function changeSection(sectionName) {
     setSection(sectionName);
   }
@@ -56,6 +52,7 @@ function App() {
       >
         <Header />
       </AppContext.Provider>
+
       <AppContext.Provider
         value={{
           storage: notesList,
@@ -72,7 +69,7 @@ function App() {
             section={section}
             value={inputNote}
             changeSection={changeSection}
-            changeInput={changeInput}
+            changeInput={(e) => changeInput(setInputNote, e.target.value)}
             storage={notesList}
             create={(e) => {
               e.preventDefault();

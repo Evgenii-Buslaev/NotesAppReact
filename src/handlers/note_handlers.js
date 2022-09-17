@@ -1,5 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 
+export function changeInput(setFunc, value) {
+  setFunc(value);
+}
+
 export function createItem(input, list, setInput, setList) {
   if (!input.length) {
     alert("Заметка не может быть пустой");
