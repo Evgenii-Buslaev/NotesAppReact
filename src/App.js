@@ -23,33 +23,7 @@ import {
 
 import { searchNote } from "./handlers/search_handlers";
 
-/* import { AppContext } from "./handlers/context";
-
-const provider = (
-  <AppContext.Provider
-    value={{
-      search: {
-        value: inputState,
-        change: setInputState,
-        setValue: setInputState,
-        setFoundList: setFoundLists,
-        search: () =>
-          searchNote(inputState, notesList, setFoundLists, setInputState),
-        list: foundLists,
-      },
-      input: {
-        value: inputNote,
-        change: changeInput,
-        create: (e) => {
-          e.preventDefault();
-          createItem(inputNote, notesList, setInputNote, setNotesList);
-        },
-        setStorage: setNotesList,
-        clearAll: clearStorage,
-      },
-    }}
-  ></AppContext.Provider>
-); */
+import { AppContext } from "./handlers/context";
 
 function App() {
   // menu
@@ -74,15 +48,14 @@ function App() {
 
   return (
     <div className="App">
-      <Header
-        setValue={setInputState}
-        setFoundList={setFoundLists}
-        value={inputState}
-        change={setInputState}
-        search={() =>
-          searchNote(inputState, notesList, setFoundLists, setInputState)
-        }
-      />
+      <AppContext.Provider value={
+        { value: inputState, 
+          setValue: setInputState, 
+          search: () =>
+          searchNote(inputState, notesList, setFoundLists, setInputState), 
+          setFoundList: setFoundLists }}>
+        <Header />
+      </AppContext.Provider>
       {foundLists.length ? (
         <SearchList
           list={foundLists}

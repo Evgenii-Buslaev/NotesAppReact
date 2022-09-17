@@ -1,11 +1,16 @@
+import { useContext } from 'react'
+
 import { BsSearch } from "react-icons/bs";
 import { GrClose } from "react-icons/gr";
 
 import styles from "../css/components/SearchNote.module.css";
 
 import { closeSearch } from "../handlers/search_handlers";
+import { AppContext } from '../handlers/context'
 
-function SearchNote({ value, change, search, setValue, setFoundList }) {
+function SearchNote() {
+  const { value, setValue, search, setFoundList } = useContext(AppContext)
+
   function closeSearchSession() {
     closeSearch(setValue, setFoundList);
   }
@@ -21,7 +26,7 @@ function SearchNote({ value, change, search, setValue, setFoundList }) {
         placeholder="Поиск..."
         value={value}
         onChange={(e) => {
-          change(e.target.value);
+          setValue(e.target.value);
           search(e.target.value);
         }}
         onKeyPress={(e) => {
