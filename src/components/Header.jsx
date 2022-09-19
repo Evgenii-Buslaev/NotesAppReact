@@ -1,22 +1,22 @@
-import { GiNotebook } from "react-icons/gi";
-
 import OpenMenuButton from "../UI/OpenMenuButton";
 import SearchNote from "./SearchNote";
 import ModeButton from "../UI/ModeButton";
+import logo from "../icons/logo.png";
 
 import styles from "../css/components/Header.module.css";
-import iconClasses from "../css/icons.module.css";
 
 function Header() {
   return (
     <div className={styles.header}>
       <section className={styles.logoCont}>
         <OpenMenuButton />
-        <GiNotebook className={iconClasses.icon} />
+        <img src={logo} alt={logo} style={{ width: "3rem" }} />
         <h1>Заметки</h1>
       </section>
-      <SearchNote />
-      <ModeButton />
+      <section className={styles.searchCont}>
+        <SearchNote />
+        <ModeButton />
+      </section>
     </div>
   );
 }

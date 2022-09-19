@@ -10,11 +10,6 @@ import iconClasses from "../css/icons.module.css";
 function ModeButton() {
   const { mode, setMode } = useContext(AppContext);
 
-  const props = {
-    className: iconClasses.icon,
-    onClick: () => changeMode(mode, setMode),
-  };
-
   return (
     <button>
       {mode === "dark" ? (

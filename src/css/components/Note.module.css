@@ -44,3 +44,12 @@
 .note:hover .noteButtons {
   opacity: 1;
 }
+
+@media (max-width: 1200px) {
+  .note {
+    width: 70%;
+  }
+  .noteText {
+    width: 90%;
+  }
+}

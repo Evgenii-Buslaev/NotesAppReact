@@ -22,3 +22,18 @@
 .formButtons img {
   width: 35px;
 }
+
+@media (max-width: 1000px) {
+  .noteInputCont {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  .formButtons {
+    margin: 0.5rem 0;
+  }
+  .formButtons img {
+    width: 25px;
+  }
+}

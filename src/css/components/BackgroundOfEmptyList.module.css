@@ -7,3 +7,30 @@
   margin: 1rem;
   width: 10rem;
 }
+
+@media (max-width: 700px) {
+  .background img {
+    width: 7rem;
+  }
+  .background h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .background img {
+    width: 5rem;
+  }
+  .background h3 {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .background img {
+    width: 4rem;
+  }
+  .background h3 {
+    font-size: 0.7rem;
+  }
+}

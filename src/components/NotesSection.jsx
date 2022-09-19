@@ -7,9 +7,7 @@ function NotesSection({
   value,
   changeSection,
   changeInput,
-  storage,
   create,
-  setStorage,
   clearAll,
   clearBin,
 }) {
@@ -22,11 +20,10 @@ function NotesSection({
             value={value}
             change={changeInput}
             create={create}
-            setStorage={setStorage}
             clearAll={clearAll}
           />
         ) : null}
-        <NotesList storage={storage} section={section} clearBin={clearBin} />
+        <NotesList section={section} clearBin={clearBin} />
       </div>
     </main>
   );

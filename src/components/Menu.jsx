@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import MenuButton from "../UI/MenuButton";
+import { AppContext } from "../handlers/context";
+
 import styles from "../css/components/Menu.module.css";
 
 import storage from "../icons/menu/storage.png";
@@ -8,6 +10,8 @@ import collection from "../icons/menu/collection.png";
 import recycleBin from "../icons/menu/recycle-bin.png";
 
 function Menu({ change }) {
+  const { menu } = useContext(AppContext);
+
   const [buttonsArray, setButtonsArray] = useState([
     {
       active: true,
@@ -60,7 +64,7 @@ function Menu({ change }) {
             toggleActive={toggleActive}
           >
             <img src={elem.img} alt={elem.alt} />
-            <h3>{elem.title}</h3>
+            {menu ? <h3>{elem.title}</h3> : null}
           </MenuButton>
         );
       })}

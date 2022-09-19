@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 // styles
 import styles from "../css/components/NotesList.module.css";
 
@@ -5,6 +7,7 @@ import styles from "../css/components/NotesList.module.css";
 import BackgroundOfEmptyList from "./BackgroundOfEmptyList";
 import Note from "./Note";
 import ImageButton from "../UI/ImageButton";
+import { AppContext } from "../handlers/context";
 
 // icons
 import notes from "../icons/menu/storage.png";
@@ -21,7 +24,8 @@ const [
   "Здесь будут храниться удаленные заметки.",
 ];
 
-function NotesList({ storage, section, clearBin }) {
+function NotesList({ section, clearBin }) {
+  const { storage } = useContext(AppContext);
   const backgroundProps = { icon: null, text: null };
 
   if (section === "notes") {

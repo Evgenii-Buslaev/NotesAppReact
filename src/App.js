@@ -23,13 +23,9 @@ import { searchNote } from "./handlers/search_handlers";
 import { AppContext } from "./handlers/context";
 
 function App() {
-  // mode
   const [mode, setMode] = useState("light");
-
-  // menu
   const [section, setSection] = useState("notes");
-
-  // notes list states
+  const [menuOpenned, setMenuOpenned] = useState(false);
   const [notesList, setNotesList] = useState([]);
   const [inputNote, setInputNote] = useState("");
 
@@ -37,7 +33,6 @@ function App() {
   const [inputState, setInputState] = useState("");
   const [foundLists, setFoundLists] = useState([]);
 
-  // menu
   function changeSection(sectionName) {
     setSection(sectionName);
   }
@@ -53,6 +48,7 @@ function App() {
           setFoundList: setFoundLists,
           mode: mode,
           setMode: setMode,
+          openMenu: setMenuOpenned,
         }}
       >
         <Header />
@@ -60,6 +56,7 @@ function App() {
 
       <AppContext.Provider
         value={{
+          menu: menuOpenned,
           storage: notesList,
           setStorage: setNotesList,
           edit: editItem,
@@ -76,12 +73,10 @@ function App() {
             value={inputNote}
             changeSection={changeSection}
             changeInput={(e) => changeInput(setInputNote, e.target.value)}
-            storage={notesList}
             create={(e) => {
               e.preventDefault();
               createItem(inputNote, notesList, setInputNote, setNotesList);
             }}
-            setStorage={setNotesList}
             clearAll={clearStorage}
             clearBin={() => clearSection(notesList, setNotesList)}
           />

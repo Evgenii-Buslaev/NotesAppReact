@@ -4,6 +4,10 @@
   height: 100vh;
 }
 
+.main-cont {
+  width: 100%;
+}
+
 .light {
   background-color: rgb(190, 190, 190);
 }

@@ -1,12 +1,16 @@
+import { useContext } from "react";
+
 import classes from "../css/components/NoteInput.module.css";
 
 import ImageButton from "..//UI/ImageButton";
+import { AppContext } from "../handlers/context";
 
 // icons
 import confirmIcon from "../icons/note-input/confirm.png";
 import clearList from "../icons/menu/recycle-bin.png";
 
-function NoteInput({ setStorage, change, create, value, clearAll }) {
+function NoteInput({ change, create, value, clearAll }) {
+  const { setStorage } = useContext(AppContext);
   return (
     <>
       <form className={classes.noteInputCont} onSubmit={create}>
