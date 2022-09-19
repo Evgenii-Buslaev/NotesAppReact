@@ -29,6 +29,12 @@
   }
 }
 
+@media (max-width: 700px) {
+  .noteInputCont input {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 600px) {
   .formButtons {
     margin: 0.5rem 0;

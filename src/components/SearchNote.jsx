@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext } from "react";
 
 import { BsSearch } from "react-icons/bs";
 import { GrClose } from "react-icons/gr";
@@ -6,10 +6,10 @@ import { GrClose } from "react-icons/gr";
 import styles from "../css/components/SearchNote.module.css";
 
 import { closeSearch } from "../handlers/search_handlers";
-import { AppContext } from '../handlers/context'
+import { AppContext } from "../handlers/context";
 
 function SearchNote() {
-  const { value, setValue, search, setFoundList } = useContext(AppContext)
+  const { value, setValue, search, setFoundList } = useContext(AppContext);
 
   function closeSearchSession() {
     closeSearch(setValue, setFoundList);
@@ -28,9 +28,6 @@ function SearchNote() {
         onChange={(e) => {
           setValue(e.target.value);
           search(e.target.value);
-        }}
-        onKeyPress={(e) => {
-          console.log(e.charCode);
         }}
       />
       <button onClick={closeSearchSession}>
