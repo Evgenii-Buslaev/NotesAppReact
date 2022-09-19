@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { AppContext } from "../handlers/context";
+
 import styles from "../css/UI/MenuButton.module.css";
 
 function MenuButton({
@@ -8,6 +11,7 @@ function MenuButton({
   change,
   chosenSection,
 }) {
+  const { menu } = useContext(AppContext);
   const classes = active
     ? [styles.menuButton, styles.active].join(" ")
     : styles.menuButton;
@@ -15,6 +19,7 @@ function MenuButton({
   return (
     <button
       className={classes}
+      style={menu ? { width: "50%" } : { width: 50 }}
       onClick={() => {
         change(chosenSection);
         toggleActive(id);

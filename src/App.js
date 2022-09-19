@@ -48,6 +48,7 @@ function App() {
           setFoundList: setFoundLists,
           mode: mode,
           setMode: setMode,
+          menu: menuOpenned,
           openMenu: setMenuOpenned,
         }}
       >
