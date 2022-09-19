@@ -25,6 +25,7 @@ import { AppContext } from "./handlers/context";
 function App() {
   // mode
   const [mode, setMode] = useState("light");
+  console.log(mode);
 
   // menu
   const [section, setSection] = useState("notes");
@@ -43,7 +44,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={`App ${mode === "dark" ? "dark" : "light"}`}>
       <AppContext.Provider
         value={{
           value: inputState,

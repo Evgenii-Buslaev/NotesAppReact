@@ -3,10 +3,6 @@
   transition-duration: 0.5s;
 }
 
-body {
-  background-color: rgb(190, 190, 190);
-}
-
 button,
 input,
 textarea {
