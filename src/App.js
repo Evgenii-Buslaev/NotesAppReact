@@ -35,6 +35,7 @@ function App() {
 
   function changeSection(sectionName) {
     setSection(sectionName);
+    if (menuOpenned) setMenuOpenned(!menuOpenned);
   }
 
   return (

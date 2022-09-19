@@ -19,7 +19,7 @@ function MenuButton({
   return (
     <button
       className={classes}
-      style={menu ? { width: "50%" } : { width: 50 }}
+      style={menu ? { width: 150 } : { width: 50 }}
       onClick={() => {
         change(chosenSection);
         toggleActive(id);
