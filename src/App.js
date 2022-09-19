@@ -23,6 +23,9 @@ import { searchNote } from "./handlers/search_handlers";
 import { AppContext } from "./handlers/context";
 
 function App() {
+  // mode
+  const [mode, setMode] = useState("light");
+
   // menu
   const [section, setSection] = useState("notes");
 
@@ -48,6 +51,8 @@ function App() {
           search: () =>
             searchNote(inputState, notesList, setFoundLists, setInputState),
           setFoundList: setFoundLists,
+          mode: mode,
+          setMode: setMode,
         }}
       >
         <Header />
