@@ -11,5 +11,6 @@
 @media (max-width: 1000px) {
   .notesCont {
     margin: 0;
+    padding: 0;
   }
 }

@@ -20,3 +20,7 @@ button:hover {
 main {
   display: flex;
 }
+
+.blur {
+  backdrop-filter: blur(8px);
+}

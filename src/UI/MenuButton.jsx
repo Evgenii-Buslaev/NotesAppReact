@@ -18,7 +18,7 @@ function MenuButton({
 
   return (
     <button
-      className={classes}
+      className={`${classes} blur`}
       style={menu ? { width: 150 } : { width: 50 }}
       onClick={() => {
         change(chosenSection);
