@@ -4,11 +4,18 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  background-color: rgb(168, 175, 140);
   width: 25vw;
   height: auto;
   padding: 1rem 0;
   margin: 1rem auto 0;
+}
+
+.noteLight {
+  background-color: rgb(168, 175, 140);
+}
+
+.noteDark {
+  background-color: rgb(67, 94, 112);
 }
 
 .noteText {

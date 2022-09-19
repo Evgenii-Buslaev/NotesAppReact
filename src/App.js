@@ -25,7 +25,6 @@ import { AppContext } from "./handlers/context";
 function App() {
   // mode
   const [mode, setMode] = useState("light");
-  console.log(mode);
 
   // menu
   const [section, setSection] = useState("notes");
@@ -66,6 +65,7 @@ function App() {
           edit: editItem,
           move: replaceItem,
           remove: deleteItem,
+          mode: mode,
         }}
       >
         {foundLists.length ? (
