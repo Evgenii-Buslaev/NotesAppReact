@@ -10,17 +10,30 @@ import iconClasses from "../css/icons.module.css";
 function ModeButton() {
   const { mode, setMode } = useContext(AppContext);
 
+  function saveMode(mode) {
+    if (localStorage.getItem("mode")) {
+      localStorage.removeItem("mode");
+    }
+    localStorage.setItem("mode", mode);
+  }
+
   return (
     <button>
       {mode === "dark" ? (
         <FaSun
           className={iconClasses.icon}
-          onClick={() => changeMode(mode, setMode)}
+          onClick={() => {
+            changeMode(mode, setMode);
+            saveMode("light");
+          }}
         />
       ) : (
         <MdDarkMode
           className={iconClasses.icon}
-          onClick={() => changeMode(mode, setMode)}
+          onClick={() => {
+            changeMode(mode, setMode);
+            saveMode("dark");
+          }}
         />
       )}
     </button>

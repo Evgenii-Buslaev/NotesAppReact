@@ -23,7 +23,7 @@ import { searchNote } from "./handlers/search_handlers";
 import { AppContext } from "./handlers/context";
 
 function App() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState(localStorage.getItem("mode") || "light");
   const [section, setSection] = useState("notes");
   const [menuOpenned, setMenuOpenned] = useState(false);
   const [notesList, setNotesList] = useState([]);
@@ -37,6 +37,15 @@ function App() {
     setSection(sectionName);
     if (menuOpenned) setMenuOpenned(!menuOpenned);
   }
+
+  if (!localStorage.getItem("mode")) {
+    localStorage.setItem("mode", mode);
+  }
+
+  /*  if (!localStorage.getItem("notes")) {
+    localStorage.setItem("notes", JSON.stringify(notesList));
+  } */
+  /* localStorage.clear(); */
 
   return (
     <div className={`App ${mode === "dark" ? "dark" : "light"}`}>
