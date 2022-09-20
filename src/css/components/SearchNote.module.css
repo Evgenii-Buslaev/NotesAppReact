@@ -17,21 +17,22 @@
 
 .icons {
   font-size: 1.2rem;
+  color: black;
 }
 
 @media (max-width: 1000px) {
   .searchNote {
-    width: 30vw;
+    width: 35vw;
   }
   .searchInput {
-    width: 20vw;
+    width: 25vw;
     font-size: 1rem;
   }
 }
 
 @media (max-width: 800px) {
   .searchNote {
-    width: 70vw;
+    width: 75vw;
   }
   .searchInput {
     width: 60vw;
@@ -40,7 +41,7 @@
 
 @media (max-width: 500px) {
   .searchNote {
-    width: 60vw;
+    width: 70vw;
   }
   .searchInput {
     width: 40vw;
@@ -50,7 +51,7 @@
 
 @media (max-width: 400px) {
   .searchNote {
-    width: 55vw;
+    width: 65vw;
   }
   .searchInput {
     width: 30vw;
