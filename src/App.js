@@ -25,6 +25,7 @@ import { AppContext } from "./handlers/context";
 
 function App() {
   const [mode, setMode] = useState(localStorage.getItem("mode") || "light");
+
   const [notesList, setNotesList] = useState(
     JSON.parse(localStorage.getItem("notes")) || []
   );
