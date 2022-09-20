@@ -37,6 +37,13 @@
   margin: 1.5rem 0 0;
 }
 
+.pinText {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .note img {
   width: 25px;
 }

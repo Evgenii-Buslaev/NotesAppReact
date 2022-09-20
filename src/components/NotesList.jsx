@@ -63,6 +63,7 @@ function NotesList({ section, clearBin }) {
               key={elem.id}
               section={section}
               text={elem.text}
+              pinned={elem.pinned}
             />
           ))
         ) : (

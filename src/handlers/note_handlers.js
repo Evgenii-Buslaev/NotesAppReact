@@ -16,6 +16,7 @@ export function createItem(input, list, setInput, setList) {
       id: uuidv4(),
       section: "notes",
       index: list.length++,
+      pinned: false,
     },
   ]);
   setInput("");
@@ -31,6 +32,13 @@ export function editItem(id, text, list, setList) {
     prev.index > curr.index ? 1 : -1
   );
   setList(sortedEditedArray);
+}
+
+export function changePinnedStatus(id, list, setList) {
+  const changedArray = list.filter((elem) => elem.id !== id);
+  const changedNote = list.filter((elem) => elem.id === id)[0];
+  changedNote.pinned = !changedNote.pinned;
+  setList([...changedArray, changedNote]);
 }
 
 export function replaceItem(id, sectionName, list, setList) {

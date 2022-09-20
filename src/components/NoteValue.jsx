@@ -5,10 +5,10 @@ import styles from "../css/components/Note.module.css";
 import { AppContext } from "../handlers/context";
 import ImageButton from "../UI/ImageButton";
 
-import pin from "../icons/note/pin.png";
-import unpin from "../icons/note/pinned.png";
+import pinImg from "../icons/note/pin.png";
+import unpinImg from "../icons/note/pinned.png";
 
-function NoteValue({ text, id }) {
+function NoteValue({ text, id, pinned, pin }) {
   const { storage, setStorage, edit } = useContext(AppContext);
   const [noteText, setNoteText] = useState(text);
 
@@ -18,25 +18,27 @@ function NoteValue({ text, id }) {
   }
 
   return (
-    <div
-      style={{
-        width: "90%",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-      }}
-    >
+    <div className={styles.pinText}>
       <TextareaAutosize
         className={styles.noteText}
         value={noteText}
         onChange={changeTextareaValue}
       />
-      <ImageButton
-        title="Закрепить"
-        imageSrc={pin}
-        imageAlt="pin note"
-        onClickHandler={() => console.log("pin")}
-      />
+      {!pinned ? (
+        <ImageButton
+          title="Закрепить"
+          imageSrc={pinImg}
+          imageAlt="pin note"
+          onClickHandler={pin}
+        />
+      ) : (
+        <ImageButton
+          title="Открепить"
+          imageSrc={unpinImg}
+          imageAlt="unpin note"
+          onClickHandler={pin}
+        />
+      )}
     </div>
   );
 }
