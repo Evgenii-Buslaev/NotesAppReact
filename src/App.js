@@ -19,6 +19,7 @@ import {
   clearSection,
   clearStorage,
 } from "./handlers/note_handlers";
+import { saveNotes } from "./handlers/storage";
 import { searchNote } from "./handlers/search_handlers";
 import { AppContext } from "./handlers/context";
 
@@ -26,7 +27,9 @@ function App() {
   const [mode, setMode] = useState(localStorage.getItem("mode") || "light");
   const [section, setSection] = useState("notes");
   const [menuOpenned, setMenuOpenned] = useState(false);
-  const [notesList, setNotesList] = useState([]);
+  const [notesList, setNotesList] = useState(
+    JSON.parse(localStorage.getItem("notes")) || []
+  );
   const [inputNote, setInputNote] = useState("");
 
   // search state
@@ -42,10 +45,7 @@ function App() {
     localStorage.setItem("mode", mode);
   }
 
-  /*  if (!localStorage.getItem("notes")) {
-    localStorage.setItem("notes", JSON.stringify(notesList));
-  } */
-  /* localStorage.clear(); */
+  saveNotes(notesList);
 
   return (
     <div className={`App ${mode === "dark" ? "dark" : "light"}`}>
