@@ -25,14 +25,14 @@ import { AppContext } from "./handlers/context";
 
 function App() {
   const [mode, setMode] = useState(localStorage.getItem("mode") || "light");
-  const [section, setSection] = useState("notes");
-  const [menuOpenned, setMenuOpenned] = useState(false);
   const [notesList, setNotesList] = useState(
     JSON.parse(localStorage.getItem("notes")) || []
   );
   const [inputNote, setInputNote] = useState("");
 
-  // search state
+  const [section, setSection] = useState("notes");
+  const [menuOpenned, setMenuOpenned] = useState(false);
+
   const [inputState, setInputState] = useState("");
   const [foundLists, setFoundLists] = useState([]);
 
