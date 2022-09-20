@@ -7,6 +7,10 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #001;
 }
 
 body,
