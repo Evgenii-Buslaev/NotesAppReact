@@ -23,7 +23,7 @@ This is new version of my application for creating notes, that had been develope
   4. Using the search bar you can find needed note and do whatever you need, for example edit or replace this note.
 
 * #### Deployment
-  You can try using my app by the following link: https://evgenii-buslaev.github.io/NotesApp/src
+  You can try using my app by the following link: https://evgenii-buslaev.github.io/NotesAppReact/
   Also, try to use the version of this app with pure JavaScript: https://evgenii-buslaev.github.io/NotesApp/src
 
 Thank you for checking the app out!
