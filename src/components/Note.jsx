@@ -9,7 +9,9 @@ import { AppContext } from "../handlers/context";
 import styles from "../css/components/Note.module.css";
 
 function Note({ section, text, id, pinned }) {
-  const { mode, storage, setStorage } = useContext(AppContext);
+  const { appMode, appStorage } = useContext(AppContext);
+  const { mode } = appMode;
+  const { storage, setStorage } = appStorage;
 
   return (
     <div

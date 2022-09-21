@@ -33,18 +33,17 @@ function App() {
     <div className={`App ${mode === "dark" ? "dark" : "light"}`}>
       <AppContext.Provider
         value={{
-          value: inputSearch,
-          setValue: setInputSearch,
-          storage: notesList,
-          setStorage: setNotesList,
-          mode: mode,
-          setMode: setMode,
-          menu: menuOpenned,
-          openCloseMenu: setMenuOpenned,
-          setSection: setSection,
-          search: () =>
-            searchNote(inputSearch, notesList, setFoundLists, setInputSearch),
-          setFoundList: setFoundLists,
+          appMode: { mode: mode, setMode: setMode },
+          appMenu: { menu: menuOpenned, openCloseMenu: setMenuOpenned },
+          appSearch: {
+            value: inputSearch,
+            setValue: setInputSearch,
+            search: () =>
+              searchNote(inputSearch, notesList, setFoundLists, setInputSearch),
+            setFoundList: setFoundLists,
+          },
+          appSection: { setSection: setSection },
+          appStorage: { storage: notesList, setStorage: setNotesList },
         }}
       >
         <Header />

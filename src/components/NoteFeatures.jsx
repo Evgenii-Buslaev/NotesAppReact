@@ -11,7 +11,8 @@ import collection from "../icons//menu/collection.png";
 import recycleBin from "../icons//menu/recycle-bin.png";
 
 function NoteFeatures({ id, section }) {
-  const { storage, setStorage } = useContext(AppContext);
+  const { appStorage } = useContext(AppContext);
+  const { storage, setStorage } = appStorage;
 
   const noteButtons = [
     {

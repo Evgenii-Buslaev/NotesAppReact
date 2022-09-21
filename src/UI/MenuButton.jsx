@@ -11,7 +11,7 @@ function MenuButton({
   change,
   chosenSection,
 }) {
-  const { menu } = useContext(AppContext);
+  const { appMenu } = useContext(AppContext);
   const classes = active
     ? [styles.menuButton, styles.active].join(" ")
     : styles.menuButton;
@@ -19,7 +19,7 @@ function MenuButton({
   return (
     <button
       className={`${classes} blur`}
-      style={menu ? { width: 150 } : { width: 50 }}
+      style={appMenu.menu ? { width: 150 } : { width: 50 }}
       onClick={() => {
         change(chosenSection);
         toggleActive(id);

@@ -26,7 +26,8 @@ const [
 ];
 
 function NotesList({ section }) {
-  const { storage, setStorage } = useContext(AppContext);
+  const { appStorage } = useContext(AppContext);
+  const { storage, setStorage } = appStorage;
   const backgroundProps = { icon: null, text: null };
 
   if (section === "notes") {

@@ -8,7 +8,8 @@ import { changeMode } from "../handlers/mode";
 import iconClasses from "../css/icons.module.css";
 
 function ModeButton() {
-  const { mode, setMode } = useContext(AppContext);
+  const { appMode } = useContext(AppContext);
+  const { mode, setMode } = appMode;
 
   function saveMode(mode) {
     if (localStorage.getItem("mode")) {

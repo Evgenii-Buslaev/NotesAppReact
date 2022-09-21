@@ -10,7 +10,8 @@ import clearList from "../icons/menu/recycle-bin.png";
 import classes from "../css/components/NoteInput.module.css";
 
 function NoteInput({ change, create, value }) {
-  const { setStorage } = useContext(AppContext);
+  const { appStorage } = useContext(AppContext);
+  const { setStorage } = appStorage;
   return (
     <>
       <form className={classes.noteInputCont} onSubmit={create}>

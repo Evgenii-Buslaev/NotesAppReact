@@ -9,7 +9,8 @@ import { closeSearch } from "../handlers/search_handlers";
 import { AppContext } from "../handlers/context";
 
 function SearchNote() {
-  const { value, setValue, search, setFoundList } = useContext(AppContext);
+  const { appSearch } = useContext(AppContext);
+  const { value, setValue, search, setFoundList } = appSearch;
 
   function closeSearchSession() {
     closeSearch(setValue, setFoundList);

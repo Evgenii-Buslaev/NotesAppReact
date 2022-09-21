@@ -12,7 +12,8 @@ import pinImg from "../icons/note/pin.png";
 import unpinImg from "../icons/note/pinned.png";
 
 function NoteValue({ text, id, pinned, pin }) {
-  const { storage, setStorage } = useContext(AppContext);
+  const { appStorage } = useContext(AppContext);
+  const { storage, setStorage } = appStorage;
   const [noteText, setNoteText] = useState(text);
 
   function changeTextareaValue(e) {

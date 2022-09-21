@@ -11,7 +11,9 @@ import recycleBin from "../icons/menu/recycle-bin.png";
 import { changeSection } from "../handlers/menu";
 
 function Menu() {
-  const { menu, setSection, openCloseMenu } = useContext(AppContext);
+  const { appMenu, appSection } = useContext(AppContext);
+  const { menu, openCloseMenu } = appMenu;
+  const { setSection } = appSection;
 
   const [buttonsArray, setButtonsArray] = useState([
     {
