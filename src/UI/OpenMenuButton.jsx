@@ -6,11 +6,11 @@ import { AiOutlineMenu } from "react-icons/ai";
 import styles from "../css/UI/OpenMenuButton.module.css";
 
 function OpenMenuButton() {
-  const { menu, openMenu } = useContext(AppContext);
+  const { menu, openCloseMenu } = useContext(AppContext);
 
   return (
     <>
-      <button onClick={() => openMenu(!menu)}>
+      <button onClick={() => openCloseMenu(!menu)}>
         <AiOutlineMenu className={styles.openMenuBtn} />
       </button>
     </>

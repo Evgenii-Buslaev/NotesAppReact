@@ -6,8 +6,7 @@ import "./css/reset.css";
 
 // components
 import Header from "./components/Header";
-import NotesSection from "./components/NotesSection";
-import SearchList from "./components/SearchList";
+import MainCont from "./components/MainCont";
 
 // handlers
 import { changeInput, createItem } from "./handlers/note_handlers";
@@ -36,41 +35,29 @@ function App() {
         value={{
           value: inputSearch,
           setValue: setInputSearch,
-          search: () =>
-            searchNote(inputSearch, notesList, setFoundLists, setInputSearch),
-          setFoundList: setFoundLists,
-          mode: mode,
-          setMode: setMode,
-          menu: menuOpenned,
-          openMenu: setMenuOpenned,
-        }}
-      >
-        <Header />
-      </AppContext.Provider>
-
-      <AppContext.Provider
-        value={{
-          menu: menuOpenned,
-          closeMenu: setMenuOpenned,
           storage: notesList,
           setStorage: setNotesList,
           mode: mode,
+          setMode: setMode,
+          menu: menuOpenned,
+          openCloseMenu: setMenuOpenned,
           setSection: setSection,
+          search: () =>
+            searchNote(inputSearch, notesList, setFoundLists, setInputSearch),
+          setFoundList: setFoundLists,
         }}
       >
-        {foundLists.length ? (
-          <SearchList list={foundLists} />
-        ) : (
-          <NotesSection
-            section={section}
-            value={inputNote}
-            changeInput={(e) => changeInput(setInputNote, e.target.value)}
-            create={(e) => {
-              e.preventDefault();
-              createItem(inputNote, notesList, setInputNote, setNotesList);
-            }}
-          />
-        )}
+        <Header />
+        <MainCont
+          searchList={foundLists}
+          section={section}
+          value={inputNote}
+          changeInput={(e) => changeInput(setInputNote, e.target.value)}
+          create={(e) => {
+            e.preventDefault();
+            createItem(inputNote, notesList, setInputNote, setNotesList);
+          }}
+        />
       </AppContext.Provider>
     </div>
   );

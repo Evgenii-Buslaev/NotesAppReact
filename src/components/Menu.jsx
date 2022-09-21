@@ -11,7 +11,7 @@ import recycleBin from "../icons/menu/recycle-bin.png";
 import { changeSection } from "../handlers/menu";
 
 function Menu() {
-  const { menu, setSection, closeMenu } = useContext(AppContext);
+  const { menu, setSection, openCloseMenu } = useContext(AppContext);
 
   const [buttonsArray, setButtonsArray] = useState([
     {
@@ -62,7 +62,7 @@ function Menu() {
             id={elem.id}
             key={elem.id}
             change={() =>
-              changeSection(setSection, elem.section, menu, closeMenu)
+              changeSection(setSection, elem.section, menu, openCloseMenu)
             }
             toggleActive={toggleActive}
           >
