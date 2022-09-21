@@ -2,28 +2,15 @@ import Menu from "../components/Menu";
 import NoteInput from "../components/NoteInput";
 import NotesList from "../components/NotesList";
 
-function NotesSection({
-  section,
-  value,
-  changeSection,
-  changeInput,
-  create,
-  clearAll,
-  clearBin,
-}) {
+function NotesSection({ section, value, changeInput, create }) {
   return (
     <main>
-      <Menu change={changeSection} />
+      <Menu />
       <div>
         {section === "notes" ? (
-          <NoteInput
-            value={value}
-            change={changeInput}
-            create={create}
-            clearAll={clearAll}
-          />
+          <NoteInput value={value} change={changeInput} create={create} />
         ) : null}
-        <NotesList section={section} clearBin={clearBin} />
+        <NotesList section={section} />
       </div>
     </main>
   );

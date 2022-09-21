@@ -1,15 +1,15 @@
 import { useContext } from "react";
 
-import classes from "../css/components/NoteInput.module.css";
-
 import ImageButton from "..//UI/ImageButton";
+import { clearStorage } from "../handlers/note_handlers";
 import { AppContext } from "../handlers/context";
 
-// icons
 import confirmIcon from "../icons/note-input/confirm.png";
 import clearList from "../icons/menu/recycle-bin.png";
 
-function NoteInput({ change, create, value, clearAll }) {
+import classes from "../css/components/NoteInput.module.css";
+
+function NoteInput({ change, create, value }) {
   const { setStorage } = useContext(AppContext);
   return (
     <>
@@ -29,7 +29,7 @@ function NoteInput({ change, create, value, clearAll }) {
           imageAlt="confirm-button-icon"
         />
         <ImageButton
-          onClickHandler={() => clearAll(setStorage)}
+          onClickHandler={() => clearStorage(setStorage)}
           title="Удалить все заметки"
           imageSrc={clearList}
           imageAlt="close-button-icon"

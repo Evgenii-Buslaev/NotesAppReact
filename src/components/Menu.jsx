@@ -8,9 +8,10 @@ import styles from "../css/components/Menu.module.css";
 import storage from "../icons/menu/storage.png";
 import collection from "../icons/menu/collection.png";
 import recycleBin from "../icons/menu/recycle-bin.png";
+import { changeSection } from "../handlers/menu";
 
-function Menu({ change }) {
-  const { menu } = useContext(AppContext);
+function Menu() {
+  const { menu, setSection, closeMenu } = useContext(AppContext);
 
   const [buttonsArray, setButtonsArray] = useState([
     {
@@ -60,7 +61,9 @@ function Menu({ change }) {
             chosenSection={elem.section}
             id={elem.id}
             key={elem.id}
-            change={change}
+            change={() =>
+              changeSection(setSection, elem.section, menu, closeMenu)
+            }
             toggleActive={toggleActive}
           >
             <img src={elem.img} alt={elem.alt} />

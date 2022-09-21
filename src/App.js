@@ -10,52 +10,34 @@ import NotesSection from "./components/NotesSection";
 import SearchList from "./components/SearchList";
 
 // handlers
-import {
-  changeInput,
-  createItem,
-  editItem,
-  replaceItem,
-  deleteItem,
-  clearSection,
-  clearStorage,
-} from "./handlers/note_handlers";
+import { changeInput, createItem } from "./handlers/note_handlers";
+import { saveMode } from "./handlers/mode";
 import { saveNotes } from "./handlers/storage";
 import { searchNote } from "./handlers/search_handlers";
 import { AppContext } from "./handlers/context";
 
 function App() {
   const [mode, setMode] = useState(localStorage.getItem("mode") || "light");
-
   const [notesList, setNotesList] = useState(
     JSON.parse(localStorage.getItem("notes")) || []
   );
   const [inputNote, setInputNote] = useState("");
-
   const [section, setSection] = useState("notes");
   const [menuOpenned, setMenuOpenned] = useState(false);
-
-  const [inputState, setInputState] = useState("");
+  const [inputSearch, setInputSearch] = useState("");
   const [foundLists, setFoundLists] = useState([]);
 
-  function changeSection(sectionName) {
-    setSection(sectionName);
-    if (menuOpenned) setMenuOpenned(!menuOpenned);
-  }
-
-  if (!localStorage.getItem("mode")) {
-    localStorage.setItem("mode", mode);
-  }
-
+  saveMode(mode);
   saveNotes(notesList);
 
   return (
     <div className={`App ${mode === "dark" ? "dark" : "light"}`}>
       <AppContext.Provider
         value={{
-          value: inputState,
-          setValue: setInputState,
+          value: inputSearch,
+          setValue: setInputSearch,
           search: () =>
-            searchNote(inputState, notesList, setFoundLists, setInputState),
+            searchNote(inputSearch, notesList, setFoundLists, setInputSearch),
           setFoundList: setFoundLists,
           mode: mode,
           setMode: setMode,
@@ -69,12 +51,11 @@ function App() {
       <AppContext.Provider
         value={{
           menu: menuOpenned,
+          closeMenu: setMenuOpenned,
           storage: notesList,
           setStorage: setNotesList,
-          edit: editItem,
-          move: replaceItem,
-          remove: deleteItem,
           mode: mode,
+          setSection: setSection,
         }}
       >
         {foundLists.length ? (
@@ -83,14 +64,11 @@ function App() {
           <NotesSection
             section={section}
             value={inputNote}
-            changeSection={changeSection}
             changeInput={(e) => changeInput(setInputNote, e.target.value)}
             create={(e) => {
               e.preventDefault();
               createItem(inputNote, notesList, setInputNote, setNotesList);
             }}
-            clearAll={clearStorage}
-            clearBin={() => clearSection(notesList, setNotesList)}
           />
         )}
       </AppContext.Provider>

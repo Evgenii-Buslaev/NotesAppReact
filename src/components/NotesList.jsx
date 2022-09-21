@@ -8,6 +8,7 @@ import BackgroundOfEmptyList from "./BackgroundOfEmptyList";
 import Note from "./Note";
 import ImageButton from "../UI/ImageButton";
 import { AppContext } from "../handlers/context";
+import { clearSection } from "../handlers/note_handlers";
 
 // icons
 import notes from "../icons/menu/storage.png";
@@ -24,8 +25,8 @@ const [
   "Здесь будут храниться удаленные заметки.",
 ];
 
-function NotesList({ section, clearBin }) {
-  const { storage } = useContext(AppContext);
+function NotesList({ section }) {
+  const { storage, setStorage } = useContext(AppContext);
   const backgroundProps = { icon: null, text: null };
 
   if (section === "notes") {
@@ -49,7 +50,7 @@ function NotesList({ section, clearBin }) {
     <>
       {section === "recycleBin" && itemsArray.length ? (
         <ImageButton
-          onClickHandler={clearBin}
+          onClickHandler={() => clearSection(storage, setStorage)}
           title="Очистить корзину"
           imageSrc={recycleBin}
           imageAlt="clear-recycle-bin-icon"
