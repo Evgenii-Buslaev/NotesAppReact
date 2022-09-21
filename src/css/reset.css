@@ -13,6 +13,12 @@ html {
   color: #001;
 }
 
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+}
+
 body,
 h1,
 h2,

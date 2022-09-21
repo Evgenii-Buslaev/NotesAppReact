@@ -35,6 +35,7 @@ function App() {
         value={{
           appMode: { mode: mode, setMode: setMode },
           appMenu: { menu: menuOpenned, openCloseMenu: setMenuOpenned },
+          appSection: { setSection: setSection },
           appSearch: {
             value: inputSearch,
             setValue: setInputSearch,
@@ -42,7 +43,6 @@ function App() {
               searchNote(inputSearch, notesList, setFoundLists, setInputSearch),
             setFoundList: setFoundLists,
           },
-          appSection: { setSection: setSection },
           appStorage: { storage: notesList, setStorage: setNotesList },
         }}
       >
